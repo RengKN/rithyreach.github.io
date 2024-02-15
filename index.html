@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RITHYREACH</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"crossorigin="anonymous"></script>
+  <style>
+       body{
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f4;
+        }
+        header{
+          background-color: #333;
+          color: #fff;
+          text-align: center;
+          padding: 10px;
+        }
+        .container{
+          max-width: 1200px;
+          margin: 20px auto;
+          background-color: #fff;
+          padding: 20px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-grid{
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 20px;
+        }
+        .product{
+          border: 1px solid #ddd;
+          padding: 10px;
+          text-align: center;
+          cursor: pointer;
+          transition: transform 0.3s ease-in-out;
+        }
+        .product:hover{
+          transform: scale(1.05);
+        }
+        img{
+          max-width: 100%;
+          height: auto;
+        }
+        .modal{
+          display: none;
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content{
+          background-color: #fefefe;
+          margin: 10% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+        }
+        .close{
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        .close:hover,
+        .close:focus{
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        #logo{
+          width: 100px;
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <img id="logo" src="img/Head-Wolf-Logo-Design-Inspiration-Graphics-39255511-1-312x208-removebg-preview - Copy.png" alt="Logo">
+        <a class="navbar-brand" href="#">RITHYREACH</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                More
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Asus Computer</a></li>
+                <li><a class="dropdown-item" href="#">MSI Computer</a></li>
+                <li><a class="dropdown-item" href="#">Dell Computer</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="product-grid">
+          <div class="product" onclick="showProductDetails('MSI Computer', 'img/GE78-HX-14VIG-200x200.jpg', 'CPU: 12th Gen Intel Core i5-1235U RAM : 8GB DDR4(3200Mhz) SDD : 512GB M.2 Display : 15.0 FHD 1920x1200', '$1.99')">
+              <img src="img/GE78-HX-14VIG-200x200.jpg" alt="Product 1">
+              <h2>MSI Computer</h2>
+              <p>CPU: 12th Gen Intel Core i5-1235U</p>
+              <p>RAM : 8GB DDR4(3200Mhz)</p>
+              <p>SDD : 512GB M.2</p>
+              <p>Display : 15.0" FHD 1920x1200</p>
+              <p>$1.99</p>
+          </div>
+  
+          <div class="product" onclick="showProductDetails('Dell Computer', 'img/Dell-Inspiron.jpg', 'CPU: 7th Gen Intel Core i3-7025 RAM : 8GB DDR3(2400Mhz) HDD : 1TB Display : 14.0 FHD 1920x1200', '$0.99')">
+              <img src="img/Dell-Inspiron.jpg" alt="Product 2">
+              <h2>Dell Computer</h2>
+              <p>CPU: 7th Gen Intel Core i3-7025</p>
+              <p>RAM : 8GB DDR3(2400Mhz)</p>
+              <p>HDD : 1TB</p>
+              <p>Display : 14.0" FHD 1920x1200</p>
+              <p>$0.99</p>
+          </div>
+  
+          <div class="product" onclick="showProductDetails('Lenovo Computer', 'img/IdeaPad-Slim-5-14IMH9-1-200x200.jpg', 'CPU: 9th Gen Intel Core i5-9085 RAM : 8GB DDR5(4400Mhz) SDD : 512GB M.2 Display : 15.2 FHD 1920x1200', '$2.99')">
+              <img src="img/IdeaPad-Slim-5-14IMH9-1-200x200.jpg" alt="Product 3">
+              <h2>Lenovo Computer</h2>
+              <p>CPU: 9th Gen Intel Core i5-9085</p>
+              <p>RAM : 8GB DDR5(4400Mhz)</p>
+              <p>SDD : 512GB M.2</p>
+              <p>Display : 15.2" FHD 1920x1200</p>
+              <p>$2.99</p>
+          </div>
+  
+          <div class="product" onclick="showProductDetails('Asus Computer', 'img/X415MA GREY-200x200.jpg', 'CPU: 13th Gen Intel Core i7-13075 RAM : 16GB DDR6(4800Mhz) SDD : 1TB M.2 Display : 16.0 FHD 1920x1200', '$3.99')">
+              <img src="img/X415MA GREY-200x200.jpg" alt="Product 4">
+              <h2>Asus Computer</h2>
+              <p>CPU: 13th Gen Intel Core i7-13075</p>
+              <p>RAM : 16GB DDR6(4800Mhz)</p>
+              <p>SDD : 1TB M.2</p>
+              <p>Display : 16.0" FHD 1920x1200</p>
+              <p>$3.99</p>
+          </div>
+  
+          <div class="product" onclick="showProductDetails('MSI Cyborg Computer', 'img/rp8624K6GuEfTKb4tulpVtIsZOsLEfoAU2b1ZjWZ.jpg', 'CPU: 12th Gen Intel Core i9-12550 RAM : 16GB DDR6(4900Mhz) SDD : 1TB M.2 Display : 16.5 FHD 1920x1200', '$4.99')">
+              <img src="img/rp8624K6GuEfTKb4tulpVtIsZOsLEfoAU2b1ZjWZ.jpg" alt="Product 5">
+              <h2>MSI Cyborg Computer</h2>
+              <p>CPU: 12th Gen Intel Core i9-12550</p>
+              <p>RAM : 16GB DDR6(4900Mhz)</p>
+              <p>SDD : 1TB M.2</p>
+              <p>Display : 16.5" FHD 1920x1200</p>
+              <p>$4.99</p>
+          </div>
+  
+          <div class="product" onclick="showProductDetails('MSI Next Gen Computer', 'img/0qi4jZ8mU0PND6pOYmtjKy28THuQkA3HfB1PaAbT.jpg', 'CPU: 13th Gen Intel Core i9-13960 RAM : 16GB DDR6(5200Mhz) SDD : 2TB M.2 Display : 19.5 FHD 1920x1200', '$5.99')">
+              <img src="img/0qi4jZ8mU0PND6pOYmtjKy28THuQkA3HfB1PaAbT.jpg" alt="Product 6">
+              <h2>MSI Next Gen Computer</h2>
+              <p>CPU: 13th Gen Intel Core i9-13960</p>
+              <p>RAM : 16GB DDR6(5200Mhz)</p>
+              <p>SDD : 2TB M.2</p>
+              <p>Display : 19.5" FHD 1920x1200</p>
+              <p>$5.99</p>
+          </div>
+  
+          <div class="product" onclick="showProductDetails('Mouse Gaming', 'img/Cobra-2-200x200.jpg', 'RAZER COBRA LIGHTWEIGHT WIRED GAMING MOUSE CHROMA RGB', '$1.68')">
+              <img src="img/Cobra-2-200x200.jpg" alt="Product 7">
+              <h2>Mouse Gaming</h2>
+              <p>RAZER COBRA LIGHTWEIGHT WIRED GAMING MOUSE CHROMA RGB</p>
+              <p>$1.68</p>
+          </div>
+          
+          <div class="product" onclick="showProductDetails('XBOX Controller', 'img/robot-4-330x409.jpg', 'XBOX ROBOT WHITE WIRELESS CONTROLLER', '$1.11')">
+              <img src="img/robot-4-330x409.jpg" alt="Product 8">
+              <h2>XBOX Controller</h2>
+              <p>XBOX ROBOT WHITE WIRELESS CONTROLLER</p>
+              <p>$1.11</p>
+          </div>
+  
+          <div class="product" onclick="showProductDetails('Asus Headset', 'img/ASUS-ROG-DELTA-S-330x409.jpg', 'ASUS ROG DELTA S WIRED GAMING HEADSET', '$0.69')">
+              <img src="img/ASUS-ROG-DELTA-S-330x409.jpg" alt="Product 9">
+              <h2>Asus Headset</h2>
+              <p>ASUS ROG DELTA S WIRED GAMING HEADSET</p>
+              <p>$0.69</p>
+          </div>
+  
+          <div class="product" onclick="showProductDetails('XBOX Wireless Controller', 'img/blue-4-330x409.jpg', 'XBOX BLUE WIRELESS CONTROLLER Brand: Microsoft', '$1.69')">
+              <img src="img/blue-4-330x409.jpg" alt="Product 10">
+              <h2>XBOX Wireless Controller</h2>
+              <p>XBOX BLUE WIRELESS CONTROLLER</p>
+              <p>Brand: Microsoft</p>
+              <p>$1.69</p>
+          </div>
+      </div>
+      <div id="mymodal" class="modal">
+          <div class="modal-content">
+              <span class="close" onclick="closeModal()">&times;</span>
+              <div id="productDetails">
+                  <h2 id="productName"></h2>
+                  <img id="productImage" src="" alt="">
+                  <p id="productDescription"></p>
+                  <p id="productPrice"></p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script>
+      var modal = document.getElementById("mymodal");
+      function showProductDetails(name, image, description, price){
+          var productName = document.getElementById('productName');
+          var productImage = document.getElementById('productImage');
+          var productDescription = document.getElementById('productDescription');
+          var productPrice = document.getElementById('productPrice');
+  
+          productName.innerHTML = name;
+          productImage.src = image;
+          productDescription.innerHTML = description;
+          productPrice.innerHTML = price;
+  
+          modal.style.display = "block";
+      }
+      function closeModal(){
+          modal.style.display = "none";
+      }
+      window.onclick = function(event){
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+      </script>
+  </main>
+</body>
+</html>
