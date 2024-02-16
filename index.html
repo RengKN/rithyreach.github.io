@@ -78,6 +78,29 @@
         #logo{
           width: 100px;
         }
+        .search{
+          position: relative;
+          display: inline-block;
+          width: 100%;
+        }
+        #search-btn:hover{
+          background-color: #04AA6D;
+          color: white;
+          transition: 0.3s;
+          transform: scale(1.10);
+        }
+        #search-box{
+          border-radius: 6px;
+        }
+        #search-box:hover{
+          border: 2px solid #7AFF33;
+        }
+        #search-btn{
+          position: relative;
+          background-color: white;
+          border-radius: 6px;
+        }
+
   </style>
 </head>
 <body>
@@ -116,11 +139,15 @@
               </ul>
             </li>
           </ul>
-          <form class="d-flex" role="search">
+          <!-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          </form> -->
         </div>
+      </div>
+      <div class="search">
+        <input id="search-box" type="text" placeholder="Search">
+        <input id="search-btn" type="button" value="Search">
       </div>
     </nav>
   </header>
